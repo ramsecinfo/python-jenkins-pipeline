@@ -1,14 +1,6 @@
-FROM python:3.7
-
-# copy all files
-RUN mkdir hello
-COPY . /hello
-WORKDIR /hello
-
-# install required libraries
-RUN pip install Flask
-RUN pip install Flask_Script
-
+FROM python:3.12.1-slim-bookworm
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python","app.py"]
 EXPOSE 5000
-
-CMD ["python", "run.py"]
